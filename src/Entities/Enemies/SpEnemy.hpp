@@ -7,11 +7,13 @@ class SpEnemy : public Enemy {
         int delay = 0;
         int specialCooldown = GetRandomValue(1380, 3600);
         bool stop = false;
+        int scoreValue = 200;
 
     public:
         SpEnemy(float x, float y) : Enemy(x, y) { 
             this->cooldown = GetRandomValue(300, 1380); 
             this->health = 4;
+            this->scoreValue = scoreValue;
         }
 
         SpEnemy(float x, float y, bool newSpawn) : Enemy(x, y){

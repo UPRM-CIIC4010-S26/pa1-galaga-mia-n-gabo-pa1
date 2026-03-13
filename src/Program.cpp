@@ -1,4 +1,5 @@
 #include "Program.hpp"
+#include<iostream>
 
 Program::Program() {
     Background::sideWalls = std::pair<HitBox, HitBox>{ 
@@ -35,7 +36,8 @@ void Program::Update() {
     pauseFrames = std::max(pauseFrames - 1, 0);
 
     if (!startup && !paused && !gameOver && pauseFrames <= 0) {
-        Enemy::ManageEnemies(player->hitBox);
+        //Enemy::ManageEnemies(player->hitBox);
+        score += Enemy::ManageEnemies(player->hitBox);
         StdEnemy::attackReset();
         ManageEnemyRespawns();
         player->update();
@@ -53,6 +55,7 @@ void Program::Update() {
                 pauseFrames = 120;
                 lives--;
             }
+            
         }
 
         for (Projectile& p : Projectile::projectiles) { 
@@ -62,13 +65,14 @@ void Program::Update() {
             }else{
                 p.update(); 
             }
-
+    
         }
-
+        //if
         if (lives <= 0 && pauseFrames <= 0) gameOver = true;
         Projectile::CleanProjectiles();
         Projectile::ProjectileCollision();
     }
+    
 }
 
 void Program::Draw() {
