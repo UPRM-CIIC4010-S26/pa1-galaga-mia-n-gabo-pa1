@@ -22,3 +22,5 @@ If a partner has no commits in the repositories, they will receive a 0.
 
 ## Student Notes
 If you have any bonus specs, bonus or any details the TA's should know, you should include it here:
+
+-The same account used to push Gabriela's changes is the same person as MoneroUPR, they just didnt realize until all the changes had already been pushed and accidentally used their alt. :)
