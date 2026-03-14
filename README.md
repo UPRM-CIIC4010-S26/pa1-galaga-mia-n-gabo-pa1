@@ -12,7 +12,7 @@ Don't forget that you must also fill out an evaluation form in Moodle to conside
 ## Grading
 
 (802-25-0348) (Gabriela A. Moneró) (Paredes gabriela.monero@upr.edu)
-(STUDENT NUMBER HERE) (STUDENT NAME HERE) (STUDENT EMAIL HERE)
+(802-25-6235) (Mia C. Vargas Rios) (mia.vargas3@upr.edu)
 
 Any project that doesn't compile will receive a 0.
 
