@@ -29,7 +29,6 @@ Program::Program() {
 }
 
 void Program::Update() {
-    std::cout << score << std::endl;
     for (Animation& a : Animation::animations) a.update();
     for (int i = 0; i < Animation::animations.size(); i++) {
         if (Animation::animations[i].done) Animation::animations.erase(Animation::animations.begin() + i);
@@ -69,8 +68,10 @@ void Program::Update() {
     
         }
         //if
-        if (lives <= 0 && pauseFrames <= 0) gameOver = true;
-        Projectile::CleanProjectiles();
+        if (lives <= 0 && pauseFrames <= 0) {
+            gameOver = true;
+            score = 0;
+        }
         Projectile::ProjectileCollision();
     }
     
@@ -79,6 +80,8 @@ void Program::Update() {
 void Program::Draw() {
     background.Draw();
     DrawText(TextFormat("Score: %i", score), 20, 20, 30, WHITE);
+    DrawText(TextFormat("Lives: %i", lives), 20, 55, 30, WHITE);
+
     if (pauseFrames <= 0 && !gameOver) player->draw();
     for (Animation& a : Animation::animations) a.draw();
 
@@ -208,6 +211,7 @@ void Program::Reset() {
     count = 0;
     delay = 0;
     lives = 3;
+    score = 0;
     Background::sideWalls = std::pair<HitBox, HitBox>{ 
         HitBox(0, 0, 10, GetScreenHeight()), 
         HitBox(GetScreenWidth() - 10, 0, 10, GetScreenHeight())
