@@ -38,6 +38,13 @@ void Program::Update() {
     if (!startup && !paused && !gameOver && pauseFrames <= 0) {
         //Enemy::ManageEnemies(player->hitBox);
         score += Enemy::ManageEnemies(player->hitBox);
+
+        if(score >= MoreLife){
+            if (lives<5){
+                lives++;
+            MoreLife += 1000;
+            }
+        }
         StdEnemy::attackReset();
         ManageEnemyRespawns();
         player->update();
@@ -107,8 +114,8 @@ void Program::ManageEnemyRespawns() {
     if (respawnCooldown <= 0) {
         respawnCooldown = 1080;
         int baseRespawnCooldown = 1000;
-        int minRespawnCooldown = 120;
-        respawnCooldown = baseRespawnCooldown - (score / 50);
+        int minRespawnCooldown = 200;
+        respawnCooldown = baseRespawnCooldown - ((score / 1000)*75);
 
         if (respawnCooldown < minRespawnCooldown) {
             respawnCooldown = minRespawnCooldown;
@@ -212,6 +219,7 @@ void Program::Reset() {
     delay = 0;
     lives = 3;
     score = 0;
+    MoreLife = 1000;
     Background::sideWalls = std::pair<HitBox, HitBox>{ 
         HitBox(0, 0, 10, GetScreenHeight()), 
         HitBox(GetScreenWidth() - 10, 0, 10, GetScreenHeight())
