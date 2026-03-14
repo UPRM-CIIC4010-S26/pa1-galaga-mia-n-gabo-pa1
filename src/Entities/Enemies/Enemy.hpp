@@ -20,7 +20,7 @@ class Enemy {
         int health = 1;
         std::pair<float, float> position;
         HitBox hitBox;
-        int scoreValue;
+        int scoreValue = 100;
         bool EnemyDead = false;
 
         inline static float direction = 0.5;

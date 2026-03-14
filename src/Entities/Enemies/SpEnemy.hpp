@@ -7,19 +7,19 @@ class SpEnemy : public Enemy {
         int delay = 0;
         int specialCooldown = GetRandomValue(1380, 3600);
         bool stop = false;
-        int scoreValue = 200;
 
     public:
         SpEnemy(float x, float y) : Enemy(x, y) { 
             this->cooldown = GetRandomValue(300, 1380); 
             this->health = 4;
-            this->scoreValue = scoreValue;
+            this->scoreValue = 200;
         }
 
         SpEnemy(float x, float y, bool newSpawn) : Enemy(x, y){
             this->cooldown = GetRandomValue(360, 1380);
             this->health = 4;
             this->spawning = newSpawn;
+            this->scoreValue = 200;
         }
 
         void draw() override;
